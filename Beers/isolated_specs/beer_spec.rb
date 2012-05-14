@@ -25,8 +25,7 @@ describe Beer do
     CLLocationCoordinate2D.any_instance.stub(:longitude=)
     ns_url_alloc = mock
     NSURL.stub(:alloc => ns_url_alloc)
-    ns_url = mock
-    ns_url_alloc.should_receive(:initWithString).with('http://example.com').and_return(ns_url)
+    ns_url_alloc.should_receive(:initWithString).with('http://example.com')
     beer = Beer.new(stub, stub, stub, 'http://example.com')
   end
 
