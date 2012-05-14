@@ -6,10 +6,10 @@ require_relative '../app/beer'
 describe Beer do
     it "saves the co-ordinates" do
       NSURL.stub_chain(:alloc, :initWithString)
-      lat, long, name, link = stub, stub, stub, stub
+      lat, long = stub, stub
       CLLocationCoordinate2D.any_instance.should_receive(:latitude=).with(lat)
       CLLocationCoordinate2D.any_instance.should_receive(:longitude=).with(long)
-      beer = Beer.new(lat, long, name, link)
+      beer = Beer.new(lat, long, stub, stub)
     end
 
     it "saves the name" do
