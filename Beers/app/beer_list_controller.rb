@@ -15,7 +15,7 @@ class BeerListController < UITableViewController
   end    
 
   def tableView(tableView, numberOfRowsInSection:section)
-    Beer::All.size
+    Beer.all.size
   end
 
   CELLID = 'CellIdentifier'
@@ -26,13 +26,13 @@ class BeerListController < UITableViewController
       cell
     end
 
-    beer = Beer::All[indexPath.row]
+    beer = Beer.all[indexPath.row]
     cell.textLabel.text = beer.title
     return cell
   end
 
   def tableView(tableView, accessoryButtonTappedForRowWithIndexPath:indexPath)
-    beer = Beer::All[indexPath.row]
+    beer = Beer.all[indexPath.row]
     controller = UIApplication.sharedApplication.delegate.beer_details_controller
     navigationController.pushViewController(controller, animated:true)
     controller.showDetailsForBeer(beer)

@@ -18,7 +18,7 @@ class BeerMapController < UIViewController
     region = MKCoordinateRegionMake(CLLocationCoordinate2D.new(50.85, 4.35), MKCoordinateSpanMake(3.1, 3.1))
     self.view.setRegion(region)
 
-    Beer::All.each { |beer| self.view.addAnnotation(beer) }
+    Beer.all.each { |beer| self.view.addAnnotation(beer) }
   end
 
   def viewWillAppear(animated)
