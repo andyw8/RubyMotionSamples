@@ -1,5 +1,6 @@
 class AppDelegate
   def application(application, didFinishLaunchingWithOptions:launchOptions)
+    return true if RUBYMOTION_ENV == 'test'
     nav = UINavigationController.alloc.initWithRootViewController(LocationsController.alloc.init)
     nav.wantsFullScreenLayout = true
     nav.toolbarHidden = true
