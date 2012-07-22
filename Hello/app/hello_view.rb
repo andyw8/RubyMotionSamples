@@ -1,14 +1,17 @@
 class HelloView < UIView
+
+  attr_reader :text
+
   def drawRect(rect)
     if @moved
       bgcolor = begin
         red, green, blue = rand(100), rand(100), rand(100)
         UIColor.colorWithRed(red/100.0, green:green/100.0, blue:blue/100.0, alpha:1.0)
       end
-      text = "ZOMG!"
+      @text = "ZOMG!"
     else
       bgcolor = UIColor.blackColor
-      text = @touches ? "Touched #{@touches} times!" : "Hello RubyMotion!"
+      @text = @touches ? "Touched #{@touches} times!" : "Hello RubyMotion!"
     end
 
     bgcolor.set 
@@ -16,7 +19,8 @@ class HelloView < UIView
   
     font = UIFont.systemFontOfSize(24)
     UIColor.whiteColor.set
-    text.drawAtPoint(CGPoint.new(10, 20), withFont:font)
+    @text.drawAtPoint(CGPoint.new(10, 20), withFont:font)
+    self.accessibilityLabel = "message"
   end
 
   def touchesMoved(touches, withEvent:event)
